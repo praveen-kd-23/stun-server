@@ -24,7 +24,7 @@ stun_packet_t* stun_packet_initialize(char *buffer , char *id, stun_msg_types_t 
 }
 
 void stun_packet_add_attr_xor_mapped_address(stun_packet_t *packet, char *client_ip, int port ){
-    stun_attr_t *attr;
+        stun_attr_t *attr;
 	stun_ip_t *ip;
 
 	attr = (stun_attr_t*) ((uint8_t *) & packet->attr + ntohs(packet->header.length));
@@ -35,7 +35,7 @@ void stun_packet_add_attr_xor_mapped_address(stun_packet_t *packet, char *client
 	ip = (stun_ip_t *) attr->value;
 
 	ip->port = htons(port ^ (STUN_MAGIC_COOKIE >> 16));
-    ip->family = 1;
+        ip->family = 1;
 
 	inet_pton(AF_INET, client_ip, (int *) &ip->address);
 	ip->address = htonl(ntohl(ip->address) ^ STUN_MAGIC_COOKIE);
@@ -44,7 +44,7 @@ void stun_packet_add_attr_xor_mapped_address(stun_packet_t *packet, char *client
 }
 
 void stun_packet_add_attr_mapped_address(stun_packet_t *packet, char *client_ip, int port){
-    stun_attr_t *attr;
+        stun_attr_t *attr;
 	stun_ip_t *ip;
 
 	attr = (stun_attr_t*) ((uint8_t *) & packet->attr + ntohs(packet->header.length));
@@ -55,7 +55,7 @@ void stun_packet_add_attr_mapped_address(stun_packet_t *packet, char *client_ip,
 	ip = (stun_ip_t *) attr->value;
 
 	ip->port = port;
-    ip->family = 1;
+        ip->family = 1;
 
 	inet_pton(AF_INET, client_ip, (int *) &ip->address);
 
