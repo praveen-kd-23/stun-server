@@ -1,9 +1,9 @@
 #include <stun.h>
 
 stun_packet_t* stun_packet_parse(char *buffer, uint16_t len){
-    
+
     stun_packet_t *packet = (stun_packet_t*)buffer;
-    
+
     packet->header.type = ntohs(packet->header.type);
     packet->header.length = ntohs(packet->header.length);
 
@@ -11,7 +11,7 @@ stun_packet_t* stun_packet_parse(char *buffer, uint16_t len){
 }
 
 stun_packet_t* stun_packet_initialize(char *buffer , char *id, stun_msg_types_t type){
-     
+
     stun_header_t *header = (stun_header_t*)buffer;
 
     header->type = htons(type);
@@ -25,7 +25,7 @@ stun_packet_t* stun_packet_initialize(char *buffer , char *id, stun_msg_types_t 
 
 void stun_packet_add_attr_xor_mapped_address(stun_packet_t *packet, char *client_ip, int port ){
     stun_attr_t *attr;
-	stun_ip_t *ip;
+    stun_ip_t *ip;
 
 	attr = (stun_attr_t*) ((uint8_t *) & packet->attr + ntohs(packet->header.length));
 	attr->type = htons(STUN_ATTR_XOR_MAPPED_ADDRESS);
