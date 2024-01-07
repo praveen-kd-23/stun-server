@@ -1,0 +1,5 @@
+<conf>
+    <config key="port" value="3478"/>
+    <config key="host" value="192.168.137.9"/>
+    <config key="software" value="stunserver"/>
+</conf>
