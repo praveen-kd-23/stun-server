@@ -33,9 +33,11 @@ Configure the host , port in conf/stun.xml
 **Testing**
 
 1 . Open https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
+
 2 . Add the server url in STUN or TURN URI with the below format
     stun:public_address_of_your_machine:port 
     eg : stun:183.24.53.45:3478
     Click Add Server
+
 3 . Click Gather Candidates .
     srflx candidates will be generated . 
